@@ -1,7 +1,7 @@
 {
   "name": "probot-messenger",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A Probot app to deliver messages from events across various services (email, IRC, XMPP, etc.)",
   "author": "Garen J. Torikian <gjtorikian@gmail.com>",
   "license": "LGPL",
   "repository": "https://github.com/gjtorikian/probot-messenger.git",
