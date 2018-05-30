@@ -66,15 +66,29 @@ describe('probot-messenger', () => {
 
       const request = {
         'from': 'Probot Messenger <probot-messenger@no-reply.com>',
-        'to': 'octocat@users.noreply.github.com',
+        'to': 'hubot@users.noreply.github.com',
         'subject': '[baxterthehacker/public-repo] 0d1a26e6: Update README.md',
-        'html': 'https://github.com/baxterthehacker/public-repo/compare/9049f1265b7d...0d1a26e67d8f',
-        'text': 'https://github.com/baxterthehacker/public-repo/compare/9049f1265b7d...0d1a26e67d8f'
+        'text': `Branch: refs/heads/changes
+        Home:   https://github.com/baxterthehacker/public-repo
+        Commit: 0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c
+            https://github.com/baxterthehacker/public-repo/commit/0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c
+        Author: baxterthehacker <baxterthehacker@users.noreply.github.com>
+        Date:   2015-05-05T19:40:15-04:00 (Tue, 05 May 2015)
+
+        Log Message:
+        -----------
+        Update README.md
+
+        Compare: https://github.com/baxterthehacker/public-repo/compare/9049f1265b7d...0d1a26e67d8f
+        `.replace(/^ {8}/gm, '')
       }
 
       expect(sendEmailMock).toHaveBeenCalled()
       const argumentToMock = sendEmailMock.mock.calls[0][0]
       expect(request.from).toEqual(argumentToMock.from)
+      expect(request.to).toEqual(argumentToMock.to)
+      expect(request.subject).toEqual(argumentToMock.subject)
+      expect(request.text).toEqual(argumentToMock.text)
     })
   })
 })
