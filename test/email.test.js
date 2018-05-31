@@ -93,7 +93,7 @@ describe('probot-messenger', () => {
       expect(request.text).toEqual(argumentToMock.text)
     })
 
-    it ('sends an email with a custom sender', async () => {
+    it('sends an email with a custom sender', async () => {
       config += `
         sender:
           name: Name
