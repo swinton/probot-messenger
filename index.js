@@ -5,6 +5,10 @@ module.exports = (robot) => {
   robot.on('push', async context => {
     const config = await getConfig(context, 'probot-messenger.yml')
     let addresses = []
+    let sender = {
+      name: 'Probot Messenger',
+      address: 'probot-messenger@no-reply.com'
+    }
 
     config.services.forEach((el) => {
       if (el.name === 'email') {
@@ -13,7 +17,7 @@ module.exports = (robot) => {
     })
 
     if (addresses.length !== 0) {
-      sendEmail(addresses, context.payload)
+      sendEmail(sender, addresses, context.payload)
     }
   })
 
