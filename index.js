@@ -13,6 +13,8 @@ module.exports = (robot) => {
     config.services.forEach((el) => {
       if (el.name === 'email') {
         addresses = el.addresses
+        // Override sender, if provided
+        sender = el.sender || sender
       }
     })
 
