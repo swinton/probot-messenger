@@ -89,6 +89,7 @@ describe('probot-messenger', () => {
       expect(request.to).toEqual(argumentToMock.to)
       expect(request.subject).toEqual(argumentToMock.subject)
       expect(request.text).toEqual(argumentToMock.text)
+      expect(`<pre>${request.text}</pre>`).toEqual(argumentToMock.html)
     })
   })
 })
