@@ -75,6 +75,9 @@ describe('probot-messenger', () => {
         Author: baxterthehacker <baxterthehacker@users.noreply.github.com>
         Date:   2015-05-05T19:40:15-04:00 (Tue, 05 May 2015)
 
+        Changed paths:
+          M README.md
+
         Log Message:
         -----------
         Update README.md
@@ -89,6 +92,7 @@ describe('probot-messenger', () => {
       expect(request.to).toEqual(argumentToMock.to)
       expect(request.subject).toEqual(argumentToMock.subject)
       expect(request.text).toEqual(argumentToMock.text)
+      expect(`<pre>${request.text}</pre>`).toEqual(argumentToMock.html)
     })
   })
 })
