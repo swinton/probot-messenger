@@ -25,8 +25,18 @@ function fixture (name, path) {
 describe('probot-messenger', () => {
   let robot
   let github
+  let config
 
   beforeEach(() => {
+    config = `
+    services:
+      -
+        name: email
+        addresses:
+          - hubot@users.noreply.github.com
+          - octocat@users.noreply.github.com
+    `
+
     sendEmailMock.mockClear()
 
     // Here we create a robot instance
@@ -36,16 +46,9 @@ describe('probot-messenger', () => {
   })
 
   describe('sending email', () => {
-    beforeEach(() => {
-      const config = `
-      services:
-        -
-          name: email
-          addresses:
-            - hubot@users.noreply.github.com
-            - octocat@users.noreply.github.com
-      `
+    const payload = fixture('push', './fixtures/push.json')
 
+    beforeEach(() => {
       github = {
         repos: {
           getContent: jest.fn().mockImplementation(() => Promise.resolve({
@@ -60,7 +63,6 @@ describe('probot-messenger', () => {
     })
 
     it('sends an email when receiving a push payload', async () => {
-      const payload = fixture('push', './fixtures/push.json')
       // Simulates delivery of a payload
       await robot.receive(payload)
 
@@ -93,6 +95,20 @@ describe('probot-messenger', () => {
       expect(request.subject).toEqual(argumentToMock.subject)
       expect(request.text).toEqual(argumentToMock.text)
       expect(`<pre>${request.text}</pre>`).toEqual(argumentToMock.html)
+    })
+
+    it('sends an email with a custom sender', async () => {
+      config += `
+        sender:
+          name: Name
+          address: name@example.com
+      `
+
+      // Simulates delivery of a payload
+      await robot.receive(payload)
+      expect(sendEmailMock).toHaveBeenCalled()
+      const argumentToMock = sendEmailMock.mock.calls[0][0]
+      expect('Name <name@example.com>').toEqual(argumentToMock.from)
     })
   })
 })
