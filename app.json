@@ -1,0 +1,33 @@
+{
+  "name": "Probot Messenger",
+  "description": "A Probot app that delivers messages from events across various services (email, IRC, XMPP, etc.)",
+  "repository": "https://github.com/gjtorikian/probot-messenger",
+  "keywords": [
+    "github",
+    "probot",
+    "event",
+    "messenger",
+    "sendgrid"
+  ],
+  "addons": [
+    {
+      "plan": "sendgrid:starter",
+      "as": "SendGrid"
+    }
+  ],
+  "env": {
+    "APP_ID": {
+      "description": "The ID of your GitHub App"
+    },
+    "WEBHOOK_SECRET": {
+      "description": "A secret key for verifying the integrity of push event payloads"
+    },
+    "LOG_LEVEL": {
+      "description": "Log level. Use `trace` to get verbose logging or `info` to show less",
+      "value": "debug"
+    },
+    "SENDGRID_APIKEY": {
+      "description": "SendGrid API key with Mail Send access"
+    }
+  }
+}
