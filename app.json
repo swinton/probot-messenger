@@ -20,7 +20,10 @@
       "description": "The ID of your GitHub App"
     },
     "WEBHOOK_SECRET": {
-      "description": "A secret key for verifying the integrity of push event payloads"
+      "description": "A secret key for verifying the integrity of webhooks"
+    },
+    "PRIVATE_KEY": {
+      "description": "The private key for your GitHub App"
     },
     "LOG_LEVEL": {
       "description": "Log level. Use `trace` to get verbose logging or `info` to show less",
