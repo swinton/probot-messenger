@@ -54,7 +54,9 @@ It is recommended to set up [domain authentication](https://sendgrid.com/docs/Us
 
 #### Deploy to Heroku
 
-[Deploy your app to Heroku](https://heroku.com/deploy?template=https://github.com/gjtorikian/probot-messenger/tree/master): [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gjtorikian/probot-messenger/tree/master), populating the `Config Vars` with your GitHub App's `APP_ID`, `WEBHOOK_SECRET`, and `PRIVATE_KEY`, as well as your SendGrid API key, `SENDGRID_APIKEY`.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gjtorikian/probot-messenger/tree/master)
+
+[Deploy your app to Heroku](https://heroku.com/deploy?template=https://github.com/gjtorikian/probot-messenger/tree/master), populating the `Config Vars` with your GitHub App's `APP_ID`, `WEBHOOK_SECRET`, and `PRIVATE_KEY`, as well as your SendGrid API key, `SENDGRID_APIKEY`.
 
 #### Update your GitHub App
 
